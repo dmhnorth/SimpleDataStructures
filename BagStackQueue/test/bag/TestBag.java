@@ -1,6 +1,7 @@
 package bag;
 
 import interfaces.Bag;
+import interfaces.BagImpl;
 import org.junit.Test;
 
 import java.util.ArrayList;

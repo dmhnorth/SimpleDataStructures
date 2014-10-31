@@ -1,6 +1,7 @@
 package stack;
 
 import interfaces.Stack;
+import interfaces.StackImpl;
 import org.junit.Test;
 
 import java.util.ArrayList;

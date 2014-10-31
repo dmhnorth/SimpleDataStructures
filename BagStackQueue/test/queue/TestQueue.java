@@ -1,6 +1,7 @@
 package queue;
 
 import interfaces.Queue;
+import interfaces.QueueImpl;
 import org.junit.Test;
 
 import java.util.ArrayList;
