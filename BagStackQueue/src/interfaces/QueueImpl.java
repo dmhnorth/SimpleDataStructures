@@ -8,7 +8,14 @@ public class QueueImpl<Item> implements Queue<Item> {
 
     @Override
     public void enqueue(Item item) {
+        Node newNode = new Node(item);
 
+        if(isEmpty()){
+            head = newNode;
+        } else {
+            newNode.linkedNode = head;
+            head = newNode;
+        }
     }
 
     @Override
@@ -18,14 +25,24 @@ public class QueueImpl<Item> implements Queue<Item> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
     }
 
     @Override
     public int size() {
-        return 0;
-    }
+        int count = 0;
 
+        Node current = head;
+
+        if(head != null){
+            count++;
+            while(current.linkedNode != null){
+                count++;
+                current = current.linkedNode;
+            }
+        }
+        return count;
+    }
 
     @Override
     public Iterator<Item> iterator() {
@@ -41,7 +58,7 @@ public class QueueImpl<Item> implements Queue<Item> {
             @Override
             public Item next() {
                 Item item = currentNode.item;
-                currentNode = currentNode.next;
+                currentNode = currentNode.linkedNode;
                 return item;
             }
         };
@@ -49,7 +66,7 @@ public class QueueImpl<Item> implements Queue<Item> {
 
     class Node{
         private Item item;
-        private Node next;
+        private Node linkedNode;
 
         Node(Item item) {
             this.item = item;
