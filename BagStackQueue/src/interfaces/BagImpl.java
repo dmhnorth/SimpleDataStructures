@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 public class BagImpl<Item> implements Bag<Item> {
 
-    private int size = 0;
     private Node head = null;
 
     @Override
@@ -17,17 +16,27 @@ public class BagImpl<Item> implements Bag<Item> {
             newNode.next = head;
             head = newNode;
         }
-        size++;
     }
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return size() == 0;
     }
 
     @Override
     public int size() {
-        return size;
+        int count = 0;
+
+        Node current = head;
+
+        if(head != null){
+            count++;
+            while(current.next != null){
+                count++;
+                current = current.next;
+            }
+        }
+        return count;
     }
 
     @Override
