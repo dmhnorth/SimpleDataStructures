@@ -47,7 +47,7 @@ public class BagImpl<Item> implements Bag<Item> {
 
             @Override
             public boolean hasNext() {
-                return currentNode.next != null;
+                return currentNode != null;
             }
 
             @Override
@@ -60,8 +60,8 @@ public class BagImpl<Item> implements Bag<Item> {
     }
 
     class Node{
-        Item item;
-        Node next;
+        private Item item;
+        private Node next;
 
         Node(Item item) {
             this.item = item;
