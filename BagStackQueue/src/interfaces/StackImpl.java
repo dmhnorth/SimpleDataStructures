@@ -20,21 +20,17 @@ public class StackImpl<Item> implements Stack<Item> {
 
     @Override
     public Item pop() {
-        Node currentNode = head, nextInStack =head;
+        Node currentNode = head;
 
         if(isEmpty()){
             return null;
         } else if (head.linkedNode == null){
             head = null;
+            return currentNode.item;
+        } else {
+            head = currentNode.linkedNode;
+            return currentNode.item;
         }
-
-        while(currentNode.linkedNode != null){
-            nextInStack = currentNode;
-            currentNode = currentNode.linkedNode;
-        }
-        nextInStack.linkedNode = null;
-
-        return currentNode.item;
     }
 
     @Override
