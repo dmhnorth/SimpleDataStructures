@@ -61,7 +61,7 @@ public class StackImpl<Item> implements Stack<Item> {
         };
     }
 
-    class Node{
+    private class Node{
         private Item item;
         private Node linkedNode;
 

@@ -59,7 +59,7 @@ public class BagImpl<Item> implements Bag<Item> {
         };
     }
 
-    class Node{
+    private class Node{
         private Item item;
         private Node linkedNode;
 

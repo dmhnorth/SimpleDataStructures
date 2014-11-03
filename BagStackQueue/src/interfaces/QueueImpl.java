@@ -79,7 +79,7 @@ public class QueueImpl<Item> implements Queue<Item> {
         };
     }
 
-    class Node{
+    private class Node{
         private Item item;
         private Node linkedNode;
 
