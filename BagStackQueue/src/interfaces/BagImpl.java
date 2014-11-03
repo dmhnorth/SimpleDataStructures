@@ -3,23 +3,64 @@ package interfaces;
 import java.util.Iterator;
 
 public class BagImpl<Item> implements Bag<Item> {
-    @Override
-    public void add(Object o) {
 
+    private int size;
+    private Node head;
+
+    public BagImpl() {
+        this.size = 0;
+        this.head = null;
+    }
+
+    @Override
+    public void add(Item i) {
+        Node newNode = new Node(i);
+
+        if (head == null){
+            head = newNode;
+        } else {
+            head.next = newNode;
+            head = newNode;
+        }
+        size++;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
-    public Iterator iterator() {
-        return null;
+    public Iterator<Item> iterator() {
+        return new Iterator<Item>() {
+
+            Node currentNode = head;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode.next != null;
+            }
+
+            @Override
+            public Item next() {
+                Item item = currentNode.item;
+                currentNode = currentNode.next;
+                return item;
+            }
+        };
+    }
+
+    class Node{
+        Item item;
+        Node next;
+
+        Node(Item item) {
+            this.item = item;
+        }
     }
 }
