@@ -4,13 +4,8 @@ import java.util.Iterator;
 
 public class BagImpl<Item> implements Bag<Item> {
 
-    private int size;
-    private Node head;
-
-    public BagImpl() {
-        this.size = 0;
-        this.head = null;
-    }
+    private int size = 0;
+    private Node head = null;
 
     @Override
     public void add(Item i) {
