@@ -7,17 +7,34 @@ public class StackImpl<Item> implements Stack<Item> {
 
     @Override
     public void push(Item item) {
-        Node node = new Node(item);
+        Node newNode = new Node(item);
 
         if(isEmpty()){
-            head = node;
+            head = newNode;
+        } else {
+            newNode.linkedNode = head;
+            head = newNode;
         }
 
     }
 
     @Override
     public Item pop() {
-        return null;
+        Node currentNode = head, nextInStack =head;
+
+        if(isEmpty()){
+            return null;
+        } else if (head.linkedNode == null){
+            head = null;
+        }
+
+        while(currentNode.linkedNode != null){
+            nextInStack = currentNode;
+            currentNode = currentNode.linkedNode;
+        }
+        nextInStack.linkedNode = null;
+
+        return currentNode.item;
     }
 
     @Override
