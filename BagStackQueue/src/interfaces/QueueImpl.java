@@ -20,7 +20,22 @@ public class QueueImpl<Item> implements Queue<Item> {
 
     @Override
     public Item dequeue() {
-        return null;
+        Node currentNode = head, nextInQueue = head;
+
+        if(isEmpty()){
+            return null;
+        } else if(head.linkedNode == null){
+            currentNode = head;
+            head = null;
+        }
+
+        while(currentNode.linkedNode != null){
+            nextInQueue = currentNode;
+            currentNode = currentNode.linkedNode;
+        }
+        nextInQueue.linkedNode = null;
+
+        return currentNode.item;
     }
 
     @Override
