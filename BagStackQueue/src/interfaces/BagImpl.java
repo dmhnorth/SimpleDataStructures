@@ -16,7 +16,7 @@ public class BagImpl<Item> implements Bag<Item> {
     public void add(Item i) {
         Node newNode = new Node(i);
 
-        if (head == null){
+        if (isEmpty()){
             head = newNode;
         } else {
             head.next = newNode;
