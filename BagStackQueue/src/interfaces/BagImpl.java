@@ -7,13 +7,13 @@ public class BagImpl<Item> implements Bag<Item> {
     private Node head = null;
 
     @Override
-    public void add(Item i) {
-        Node newNode = new Node(i);
+    public void add(Item item) {
+        Node newNode = new Node(item);
 
         if (isEmpty()){
             head = newNode;
         } else {
-            newNode.next = head;
+            newNode.linkedNode = head;
             head = newNode;
         }
     }
@@ -31,9 +31,9 @@ public class BagImpl<Item> implements Bag<Item> {
 
         if(head != null){
             count++;
-            while(current.next != null){
+            while(current.linkedNode != null){
                 count++;
-                current = current.next;
+                current = current.linkedNode;
             }
         }
         return count;
@@ -53,7 +53,7 @@ public class BagImpl<Item> implements Bag<Item> {
             @Override
             public Item next() {
                 Item item = currentNode.item;
-                currentNode = currentNode.next;
+                currentNode = currentNode.linkedNode;
                 return item;
             }
         };
@@ -61,7 +61,7 @@ public class BagImpl<Item> implements Bag<Item> {
 
     class Node{
         private Item item;
-        private Node next;
+        private Node linkedNode;
 
         Node(Item item) {
             this.item = item;

@@ -4,8 +4,10 @@ import java.util.Iterator;
 
 public class QueueImpl<Item> implements Queue<Item> {
 
+    private Node head;
+
     @Override
-    public void enqueue(Object o) {
+    public void enqueue(Item item) {
 
     }
 
@@ -24,8 +26,33 @@ public class QueueImpl<Item> implements Queue<Item> {
         return 0;
     }
 
+
     @Override
-    public Iterator iterator() {
-        return null;
+    public Iterator<Item> iterator() {
+        return new Iterator<Item>() {
+
+            Node currentNode = head;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode != null;
+            }
+
+            @Override
+            public Item next() {
+                Item item = currentNode.item;
+                currentNode = currentNode.next;
+                return item;
+            }
+        };
+    }
+
+    class Node{
+        private Item item;
+        private Node next;
+
+        Node(Item item) {
+            this.item = item;
+        }
     }
 }
