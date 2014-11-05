@@ -24,9 +24,6 @@ public class StackImpl<Item> implements Stack<Item> {
 
         if(isEmpty()){
             return null;
-        } else if (head.linkedNode == null){
-            head = null;
-            return currentNode.item;
         } else {
             head = currentNode.linkedNode;
             return currentNode.item;
