@@ -35,6 +35,8 @@ public class StackImpl<Item> implements Stack<Item> {
         return head == null;
     }
 
+//Currently in linear time. 
+//Maintaining an int size variable would create constant time
     @Override
     public int size() {
         int count = 0;
